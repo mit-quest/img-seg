@@ -8,9 +8,33 @@ TensorFlow for semantic image segmentation on the
  and 
  [tensorflow models Resnet implementation](https://github.com/tensorflow/models/tree/master/official/resnet).
  
+ 
+## Remote on GCP
 
-## Setup
+### Setup
+
+- Install terraform
+- `cd terraform`
+- `terraform init`
+- `terraform apply`
+- `cd ..`
+
+
+### Training
+
+
+### Teardown
+
+- `terraform destroy`
+
+
+## Local
+
+### Setup
 Please install latest version of TensorFlow (r1.6) and use Python 3.  
+
+- `pip3 install pipenv`
+- `pipenv install`
 - Download and extract 
 [PASCAL VOC training/validation data](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar) 
 (2GB tar file), specifying the location with the `--data_dir`.  
@@ -27,7 +51,7 @@ Please install latest version of TensorFlow (r1.6) and use Python 3.
 from [slim](https://github.com/tensorflow/models/tree/master/research/slim)
 specifying the location with `--pre_trained_model`.
 
-## Training
+### Training
 For training model, you first need to convert original data to
 the TensorFlow TFRecord format. This enables to accelerate training seep. 
 ```bash
@@ -64,7 +88,7 @@ tensorboard --logdir MODEL_DIR
 
 </p>
 
-## Evaluation
+### Evaluation
 To evaluate how model perform, one can use the following command:
 ```bash
 python evaluate.py --help
@@ -84,7 +108,7 @@ python train.py --train_epochs 46 --batch_size 16 --weight_decay 1e-4 --model_di
 You may achieve better performance with the cost of computation with my 
 [DeepLabV3+ Implementation](https://github.com/rishizek/tensorflow-deeplab-v3-plus).
 
-## Inference
+### Inference
 To apply semantic segmentation to your images, one can use the following commands:
 ```bash
 python inference.py --data_dir DATA_DIR --infer_data_list INFER_DATA_LIST --model_dir MODEL_DIR 

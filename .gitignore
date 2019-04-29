@@ -112,3 +112,10 @@ models
 dataset/inference_output/
 .DS_Store
 dataset/export_output
+
+keys/
+
+# terraform
+.terraform
+*.tfstate
+*.tfstate.*
